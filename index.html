@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Chicago Crime Analysis</title>
+    <meta name="keywords" content="Guitar World Template, Rock N Roll, free design, download website templates, XHTML, CSS" />
+    <meta name="description" content="Guitar World (Rock N Roll) - Free Website Template, Free XHTML CSS Design Layout" />
+    <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
+
+    <!-- following 2 linies added for heatmap-->
+    <script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="lib/bootstrap.min.js"></script>
+
+    <script src="./lib/d3.js"></script>
+    <script src="./lib/d3-tip.js"></script>
+    <script src="./js/globalConst.js"></script>
+    <script src="./js/mapscript.js"></script>
+    <script src="./js/coffee.js"></script>
+
+    <script type="text/javascript" src="./js/unemp.js"></script>
+    <script type="text/javascript" src="./js/poverty.js"></script>
+
+    <script type="text/javascript" src="./js/arrest.js"></script>
+    <script src="./lib/canvasjs.min.js"></script>
+
+    <link rel="stylesheet" href="./css/dropdown.css">
+
+</head>
+
+<body onload="initialize()">
+    <div class="templatemo_container">
+         <div id="Title">
+            <div class="title_container">
+                <h1>Chicago Crime Analysis</h1> 
+            </div>
+        </div>
+        <div id="templatemo_header">
+            <div id="templatemo_menu_section">
+                <ul>
+                    <li><a href="#explore" class="current">Home</a></li>
+                    <li><a href="#spatioexplore">Spatio-Temporal Analysis</a></li>
+                    <li><a href="#templatemo_content_area1">Daily Analysis</a></li>
+                    <li><a href="#templatemo_content_area4">Police Effectiveness</a></li>
+                    <li><a href="#templatemo_content_area2_3">Socio Economic Factors</a></li>
+                </ul>
+            </div>
+        </div>
+
+       
+
+        <div id="explore">
+            <div class="exploration_container">
+                <div class="area1_top">
+                <h1>Insights...</h1>
+                </div>
+                <ul>
+                  <li>Austin is undoubtedly the most dangerous community in the city having the most number of crimes every year. </li>
+                  <li>Even though there are three police districts covering the Austin community, the crime rate is not in check.</li>
+                  <li>It has been seen that the criminals take a liking to the first day of every month, and especially the first of January. </li>
+                  <li>Special days do affect the crime incidents. For example, on Christmas and Thanksgiving Day, less number of crimes are reported, whereas on the New Year's Day, a significantly higher number of crimes take place. </li>
+                  <li>Even though the arrest rate has not improved in the recent years, the crime rate has gone down. </li>
+                  <li>For prostitution, the arrest rate is significatly high compared to the other crimes, and many incidents of sexual abuse are reported on the New Year's Day which may be attributed to the large number of parties.</li>
+                  <li>Surprisingly, unemployment doesn't affect the crimes in a community to a major extent. </li>
+              </ul>
+
+            </div>
+        </div>
+
+        <hr>
+
+        <div id="spatioexplore"></div>
+        <div id="filters_top">
+            <div class="templatemo_container">
+
+                <div id="filters">
+                    <div class="filter">
+                        <label for="communitiesdropdown">Select Community: </label>
+                        <select width="35%" id="communitiesdropdown" name="communities" onchange="changeCommFromSel(this);"></select>
+                        <svg width="65%" id="timeline"></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="templatemo_content_area">
+
+            <div id="templatemo_left">
+
+                <div class="templatemo_left_section_box">
+
+                    <div class="templatemo_left_section_box_top">
+                        <h1> Select Crimes</h1>
+                    </div>
+                    <div id="crimeslist" class="templatemo_left_section_box_mid">
+                        <ul class="checkbox_ul">
+                            <li id="AllCrimes">
+                                <input type="checkbox" name="AllCrimes" id="allcrime" value="allcrime" checked="true">
+                                <label for="allcrime">All Crime</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="Violent" id="violent" checked="true">
+                                <label for="violent">Violent</label>
+
+                                <ul class="checkbox_ul" id="violentChild">
+                                    <li>
+                                        <input type="checkbox" name="Assault" id="assault" value="08A" checked="true">
+                                        <label for="assault">Assault</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="Robbery" id="robbery" value="03" checked="true">
+                                        <label for="robbery">Robbery</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="Homicide" id="homicide" value="01A" checked="true">
+                                        <label for="homicide">Homicide</label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="Property" id="property" checked="true">
+                                <label for="property">Property</label>
+
+                                <ul class="checkbox_ul" id="propertyChild">
+                                    <li>
+                                        <input type="checkbox" name="Arson" id="arson" value="09" checked="true">
+                                        <label for="arson">Arson</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="Theft" id="theft" value="06 07" checked="true">
+                                        <label for="theft">Theft</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="Burglary" id="burglary" value="05" checked="true">
+                                        <label for="burglary">Burglary</label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="Sexual" id="sexual" checked="true">
+                                <label for="sexual">Sexual</label>
+                                <ul class="checkbox_ul" id="sexualChild">
+                                    <li>
+                                        <input type="checkbox" name="Prostitution" id="prostitution" value="16" checked="true">
+                                        <label for="prostitution">Prostitution</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="Sexual Abuse" id="sexual_abuse" value="02 17" checked="true">
+                                        <label for="sexual_abuse">Sexual Abuse</label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li id="othersCrime">
+                                <input type="checkbox" name="others" id="others" value="others" checked="true">
+                                <label for="others">Others</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="templatemo_left_section_box_bottom">
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- End Of left -->
+
+            <div id="templatemo_middle">
+
+                <div class="templatemo_middle_section_box">
+
+                    <div class="templatemo_middle_section_box_top">
+                        <h1>Explore the Crime in Chicago</h1>
+                    </div>
+                    <div id=map_container class="templatemo_middle_section_box_mid">
+
+
+                    </div>
+                    <div class="templatemo_middle_section_box_bottom">
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- End Of middle -->
+
+            <div id="templatemo_right">
+
+                <div class="templatemo_right_section_box">
+
+                    <div class="templatemo_right_section_box_top">
+                        <h1>Time Analysis</h1>
+                        <label for="typedropdown">Frequency: </label>
+                        <select id="typedropdown" onchange="updateFrequency()">
+                            <option value=0>Yearly</option>
+                            <option value=2>Monthly</option>
+                            <option value=1>Weekly</option>
+                            <option value=3>Hourly</option>
+                            <!-- <option value=5>Arrest</option> -->
+                        </select>
+						<select id="groupdropdown" onchange="updateFrequency()" style="visibility: hidden;">
+
+                            <option value=2>2 Hr Block</option>
+                            <option value=3>3 Hr Block</option>
+                            <option value=4>4 Hr Block</option>
+                            <option value=6>6 Hr Block</option>
+                        </select>
+                    </div>
+                    <div class="templatemo_right_section_box_mid">
+                        <div id="vis"></div>
+                    </div>
+                    <div class="templatemo_right_section_box_bottom">
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- End Of right -->
+
+        </div>
+
+
+        <div id="templatemo_content_area1">
+            <div class="area1_content_box">
+                <div class="area1_top">
+                    <h1>Explore daily crimes</h1>
+                </div>
+                <div id="DailyAnalysis">
+                    <div id="cal-map" class="calender-map"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="templatemo_content_area4">
+            <div class="area4_content_box">
+                <div class="area4_top">
+                    <h1>Explore Police effectiveness</h1>
+                </div>
+                <div id="chartContainer3" style="height: 400px; float:left; width: 40%; margin:22px 0 0 20px">
+                </div>
+                <div id="arrestTrend" style="height: 400px;float:left;  width: 50%; margin:25px 0 0 100px">
+                </div>
+            </div>
+        </div>
+
+        <div id="templatemo_content_area2_3">
+            <div class="area2_3_content_box">
+                <div class="area2_3_top">
+                    <h1>Socio Economic factors</h1>
+                </div>
+                <div id="SocioEconomic">
+
+                    <div id="templatemo_content_area2">
+                        <div id="chartContainer"></div>
+                    </div>
+
+
+                    <div id="templatemo_content_area3">
+                        <div id="chartContainer2"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cleaner"></div>
+
+    </div>
+    <!-- End Of content area -->
+
+    </div>
+    <!-- End Of container -->
+
+    <div id="templatemo_bottom_bg">
+        <div class="templatemo_container">
+
+            <div id="templatemo_footer">
+                <div class="templatemo_footer_section">
+                    <a href="#startexplore">Home</a> | 
+                    <a href="#spatioexplore">Spatio-Temporal Analysis</a> | 
+                    <a href="#templatemo_content_area1">Daily Analysis</a> | 
+                    <a href="#templatemo_content_area4">Police Effectiveness</a> | 
+                    <a href="#templatemo_content_area2_3">Socio Economic Factors</a>
+                </div>
+                <div class="templatemo_footer_section">
+                    Created by © <a href="#">Siva Kongara, Shaishavkumar Jogani, and Pavan Omanwar</a><br /><br />
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./js/calendermap.js"></script>
+    <script type="text/javascript" src="./js/checkbox.js"></script>
+</body>
+
+</html>

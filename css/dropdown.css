@@ -1,0 +1,148 @@
+.community {
+    stroke: #000;
+    stroke-width: 0.5px;
+    stroke-linecap: round;
+}
+
+.community:hover {
+    stroke: #FFF;
+    stroke-width: 2.5px;
+    stroke-linecap: round;
+    opacity: 0.2;
+}
+
+.calender {
+    stroke: #000;
+    stroke-width: 0.5px;
+    stroke-linecap: round;
+}
+
+.calender:hover {
+    stroke: #FFF;
+    stroke-width: 1.5px;
+    stroke-linecap: round;
+    opacity: 0.2;
+}
+
+.selected {
+    stroke: #FFF;
+    stroke-width: 1.5px;
+    stroke-linecap: round;
+    fill: #123
+}
+
+.district   {
+    stroke: #000;
+    stroke-width: 1px;
+    stroke-linecap: round;
+    fill: #0000FF;
+    fill-opacity: 0.2;
+}
+
+.grow { transition: all .2s ease-in-out; position: relative; display: inline-block;}
+.grow:hover { transform: scale(1.01); }
+
+.text {
+    font-size: 10px;
+    text-transform: capitalize;
+}
+
+.hidden {
+    display: none;
+}
+
+div.tooltip {
+    color: #222;
+    background: #ccc;
+    padding: .5em;
+    text-transform: capitalize;
+    text-shadow: #f5f5f5 0 1px 0;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px 0px #a6a6a6;
+    opacity: 0.9;
+    position: absolute;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content p {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content p:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+
+
+.ticks {
+  font: 10px sans-serif;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 10px;
+}
+
+.track-inset {
+  stroke: #ddd;
+  stroke-width: 8px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  stroke: transparent;
+}
+
+.handle {
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+hr {
+  margin: 50px 0;
+}
+
+.checkbox_ul {
+  list-style: none;
+}
